@@ -107,18 +107,23 @@ export default function LeadMagnetsSection({ onOpenModal }: LeadMagnetsSectionPr
         </div>
 
         {/* Mid-section CTA */}
-        <div className="reveal" style={{ marginTop: "3rem", textAlign: "center" }}>
+        <div className="reveal lead-magnets-pack-cta" style={{ marginTop: "3rem", textAlign: "center", paddingLeft: "0.25rem", paddingRight: "0.25rem" }}>
           <p style={{ color: "#7070A0", marginBottom: "1rem" }}>Want all 6 resources in one pack?</p>
-          <button className="btn-primary lead-pack-btn" onClick={() => onOpenModal("checklist")} style={{ fontSize: "1rem" }}>
-            Get The Complete Gym Growth Resource Pack <ArrowRight size={16} />
+          <button className="btn-primary lead-pack-btn" onClick={() => onOpenModal("checklist")} style={{ fontSize: "clamp(0.875rem, 3.2vw, 1rem)", maxWidth: "100%", boxSizing: "border-box" }}>
+            Get The Complete Gym Growth Resource Pack <ArrowRight size={16} style={{ flexShrink: 0 }} />
           </button>
-      <style>{`
-        @media (max-width: 640px) {
-          .lead-pack-btn { width: 100% !important; justify-content: center !important; font-size: 0.9rem !important; }
-        }
-      `}</style>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 640px) {
+          .lead-pack-btn {
+            width: 100% !important;
+            max-width: 100% !important;
+            justify-content: center !important;
+          }
+          .lead-magnets-pack-cta { padding-left: 0 !important; padding-right: 0 !important; }
+        }
+      `}</style>
     </section>
   );
 }

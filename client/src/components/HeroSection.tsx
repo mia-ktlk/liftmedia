@@ -80,19 +80,19 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
               Lift Media helps gym owners grow using social media systems, AI tools, content frameworks, and high-performing short-form content strategies — designed specifically for fitness businesses.
             </p>
 
-            <div className="reveal hero-btn-row" style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap", marginBottom: "2.5rem", transitionDelay: "0.2s" }}>
-              <button className="btn-primary" onClick={onOpenModal} style={{ fontSize: "1rem" }}>
-                Get Free Gym Growth Checklist <ArrowRight size={16} />
+            <div className="reveal hero-btn-row" style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap", marginBottom: "2.5rem", transitionDelay: "0.2s", width: "100%", minWidth: 0 }}>
+              <button className="btn-primary" onClick={onOpenModal} style={{ fontSize: "clamp(0.875rem, 3.5vw, 1rem)", maxWidth: "100%", boxSizing: "border-box" }}>
+                Get Free Gym Growth Checklist <ArrowRight size={16} style={{ flexShrink: 0 }} />
               </button>
-              <button className="btn-outline" onClick={onOpenModal}>
-                <Play size={15} fill="currentColor" /> Book A Strategy Call
+              <button className="btn-outline" onClick={onOpenModal} style={{ maxWidth: "100%", boxSizing: "border-box", fontSize: "clamp(0.875rem, 3.5vw, 1rem)" }}>
+                <Play size={15} fill="currentColor" style={{ flexShrink: 0 }} /> Book A Strategy Call
               </button>
             </div>
 
             {/* Trust bar */}
             <div className="reveal" style={{ transitionDelay: "0.3s" }}>
               {/* Free courses row */}
-              <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginBottom: "1rem" }}>
+              <div className="hero-course-links" style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginBottom: "1rem" }}>
                 <Link
                   href="/course/basic-filming"
                   style={{
@@ -250,11 +250,13 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
         @media (max-width: 768px) {
           .hero-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
           .hero-right { display: none !important; }
-          .hero-btn-row { flex-direction: column !important; }
-          .hero-btn-row button { width: 100% !important; justify-content: center !important; }
+          .hero-btn-row { flex-direction: column !important; align-items: stretch !important; }
+          .hero-btn-row button { width: 100% !important; max-width: 100% !important; justify-content: center !important; }
           .hero-section .container { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
           .hero-section { padding-bottom: 5rem !important; }
           .hero-body-text { max-width: 100% !important; }
+          .hero-course-links { flex-direction: column !important; align-items: stretch !important; }
+          .hero-course-links a { width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; flex-wrap: wrap !important; }
         }
       `}</style>
     </section>

@@ -86,7 +86,8 @@ export default function ContentMultiplicationSection({ onOpenModal }: ContentMul
   return (
     <section
       ref={sectionRef}
-      className="section-blue-mid" style={{ padding: "6rem 0", position: "relative", overflow: "hidden" }}
+      className="section-blue-mid mult-section"
+      style={{ padding: "6rem 0", position: "relative", overflow: "hidden" }}
     >
       {/* Background image subtle overlay */}
       <div style={{
@@ -98,20 +99,20 @@ export default function ContentMultiplicationSection({ onOpenModal }: ContentMul
         pointerEvents: "none",
       }} />
 
-      <div className="container" style={{ position: "relative" }}>
+      <div className="container" style={{ position: "relative", width: "100%", maxWidth: "100%", boxSizing: "border-box" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "center" }} className="mult-grid">
 
           {/* LEFT — Copy */}
-          <div>
+          <div className="mult-copy-col" style={{ minWidth: 0, width: "100%", overflow: "hidden" }}>
             <div className="reveal">
               <span className="section-label">Content Multiplication System</span>
-              <ElectricHeading as="h2" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 800, fontSize: "clamp(1.625rem, 6vw, 3rem)", color: "#F0F0F5", marginTop: "0.75rem", marginBottom: "1.25rem", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+              <ElectricHeading as="h2" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 800, fontSize: "clamp(1.625rem, 6vw, 3rem)", color: "#F0F0F5", marginTop: "0.75rem", marginBottom: "1.25rem", letterSpacing: "-0.02em", lineHeight: 1.1, overflowWrap: "anywhere", wordBreak: "break-word" }}>
                 Turn One Coaching Moment Into Weeks Of Marketing.
               </ElectricHeading>
-              <p style={{ fontSize: "clamp(0.9375rem, 3.5vw, 1.0625rem)", color: "#7070A0", lineHeight: 1.75, marginBottom: "1.5rem" }}>
+              <p style={{ fontSize: "clamp(0.9375rem, 3.5vw, 1.0625rem)", color: "#7070A0", lineHeight: 1.75, marginBottom: "1.5rem", overflowWrap: "anywhere" }}>
                 Lift Media helps gym owners capture the expertise they already use every day and transform it into high-performing content across every platform.
               </p>
-              <p style={{ fontSize: "clamp(0.9375rem, 3.5vw, 1.0625rem)", color: "#9090B0", lineHeight: 1.75, marginBottom: "2rem" }}>
+              <p style={{ fontSize: "clamp(0.9375rem, 3.5vw, 1.0625rem)", color: "#9090B0", lineHeight: 1.75, marginBottom: "2rem", overflowWrap: "anywhere" }}>
                 You don't need to become a full-time creator.<br />
                 <strong style={{ color: "#F0F0F5" }}>You need systems that make your knowledge scalable.</strong>
               </p>
@@ -126,26 +127,29 @@ export default function ContentMultiplicationSection({ onOpenModal }: ContentMul
                   "A blog becomes SEO traffic",
                   "A client question becomes a week of content",
                 ].map((item, i) => (
-                  <div key={i} style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                    <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#3B82F6", flexShrink: 0 }} />
-                    <span style={{ fontSize: "0.9375rem", color: "#C0C0D0" }}>{item}</span>
+                  <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem", minWidth: 0 }}>
+                    <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#3B82F6", flexShrink: 0, marginTop: "0.35rem" }} />
+                    <span style={{ fontSize: "0.9375rem", color: "#C0C0D0", lineHeight: 1.5, overflowWrap: "anywhere" }}>{item}</span>
                   </div>
                 ))}
               </div>
 
-              <button className="btn-primary" onClick={onOpenModal} style={{ fontSize: "1rem" }}>
-                Get The Free Content Repurposing Checklist <ArrowRight size={16} />
+              <button className="btn-primary mult-checklist-btn" onClick={onOpenModal} style={{ fontSize: "clamp(0.875rem, 3.5vw, 1rem)", maxWidth: "100%", width: "100%", boxSizing: "border-box", justifyContent: "center" }}>
+                Get The Free Content Repurposing Checklist <ArrowRight size={16} style={{ flexShrink: 0 }} />
               </button>
             </div>
           </div>
 
           {/* RIGHT — Animated flow — FIXED HEIGHT so layout never shifts */}
           <div
-            className="reveal"
+            className="reveal mult-flow-root"
             style={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              width: "100%",
+              maxWidth: "100%",
+              minWidth: 0,
               // Fixed height = all cards + all arrows — no layout shift
               height: TOTAL_H,
               minHeight: TOTAL_H,
@@ -157,6 +161,7 @@ export default function ContentMultiplicationSection({ onOpenModal }: ContentMul
             {flowSteps.map((step, i) => (
               <div
                 key={step.label}
+                className="mult-flow-slot"
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -169,9 +174,10 @@ export default function ContentMultiplicationSection({ onOpenModal }: ContentMul
               >
                 {/* Card — fixed height */}
                 <div
+                  className="mult-flow-card"
                   style={{
                     width: "100%",
-                    maxWidth: "340px",
+                    maxWidth: "min(340px, 100%)",
                     height: CARD_H,
                     background: activeStep === i ? `${step.color}30` : "rgba(255,255,255,0.1)",
                     border: `1px solid ${activeStep === i ? step.color : "rgba(255,255,255,0.18)"}`,
@@ -180,7 +186,7 @@ export default function ContentMultiplicationSection({ onOpenModal }: ContentMul
                     padding: "0 1.25rem",
                     display: "flex",
                     alignItems: "center",
-                    gap: "1rem",
+                    gap: "0.75rem",
                     transition: "background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease",
                     boxShadow: activeStep === i ? `0 0 24px ${step.color}30` : "none",
                     flexShrink: 0,
@@ -199,10 +205,10 @@ export default function ContentMultiplicationSection({ onOpenModal }: ContentMul
                     {step.icon}
                   </div>
                   <div style={{ flex: 1, minWidth: 0, overflow: "hidden" }}>
-                    <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: "0.875rem", color: activeStep === i ? step.color : "#F0F0F5", transition: "color 0.4s ease", lineHeight: 1.3 }}>
+                    <div className="mult-flow-label" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: "0.875rem", color: activeStep === i ? step.color : "#F0F0F5", transition: "color 0.4s ease", lineHeight: 1.3, overflowWrap: "anywhere" }}>
                       {step.label}
                     </div>
-                    <div style={{ fontSize: "0.75rem", color: "#A0A0C0", lineHeight: 1.4, marginTop: "0.2rem" }}>{step.desc}</div>
+                    <div className="mult-flow-desc" style={{ fontSize: "0.75rem", color: "#A0A0C0", lineHeight: 1.4, marginTop: "0.2rem", overflowWrap: "anywhere" }}>{step.desc}</div>
                   </div>
                   {/* Checkmark — fixed width so it doesn't cause layout shift */}
                   <div style={{ width: 20, flexShrink: 0, textAlign: "center", color: "#22C55E", fontSize: "0.75rem", fontWeight: 700, opacity: activeStep > i ? 1 : 0, transition: "opacity 0.3s ease" }}>✓</div>
@@ -229,7 +235,31 @@ export default function ContentMultiplicationSection({ onOpenModal }: ContentMul
       </div>
 
       <style>{`
-        @media (max-width: 768px) { .mult-grid { grid-template-columns: 1fr !important; gap: 3rem !important; } }
+        @media (max-width: 768px) {
+          .mult-section { padding: 3.5rem 0 !important; }
+          .mult-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+          .mult-flow-root {
+            height: auto !important;
+            min-height: 0 !important;
+            max-height: none !important;
+            overflow: visible !important;
+            align-items: stretch !important;
+          }
+          .mult-flow-slot { height: auto !important; min-height: 0 !important; }
+          .mult-flow-card {
+            max-width: 100% !important;
+            height: auto !important;
+            min-height: ${CARD_H}px !important;
+            padding: 0.625rem 0.75rem !important;
+            align-items: flex-start !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+          .mult-flow-label { font-size: 0.8125rem !important; }
+          .mult-flow-desc { font-size: 0.6875rem !important; }
+          .mult-flow-card > div:first-of-type { width: 36px !important; height: 36px !important; font-size: 1.1rem !important; }
+          .mult-checklist-btn { width: 100% !important; }
+        }
       `}</style>
     </section>
   );

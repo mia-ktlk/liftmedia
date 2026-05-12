@@ -162,6 +162,18 @@
     background: rgba(59,130,246,0.06);
   }
 
+  @media (max-width: 640px) {
+    .btn-primary,
+    .btn-outline {
+      white-space: normal;
+      text-align: center;
+      justify-content: center;
+      max-width: 100%;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+
   /* ── Cards ── */
   .lift-card {
     background: #16161F;
