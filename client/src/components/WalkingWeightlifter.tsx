@@ -191,15 +191,15 @@ export default function WalkingWeightlifter() {
 
             {!state.succeeded ? (
               <>
-                <div style={{ textAlign: "center", marginBottom: "1.75rem" }}>
-                  <div style={{ fontSize: "3.5rem", marginBottom: "0.75rem", display: "inline-block", animation: "lifterWalk 1.2s ease-in-out infinite" }}>🏋️</div>
+                <div style={{ textAlign: "center", marginBottom: "clamp(1rem, 3vw, 1.75rem)" }}>
+                  <div style={{ fontSize: "clamp(2.5rem, 10vw, 3.5rem)", marginBottom: "0.75rem", display: "inline-block", animation: "lifterWalk 1.2s ease-in-out infinite" }}>🏋️</div>
                   <div style={{ display: "inline-block", background: "rgba(59,130,246,0.15)", border: "1px solid rgba(59,130,246,0.3)", borderRadius: "999px", padding: "0.25rem 0.875rem", fontSize: "0.75rem", fontWeight: 700, color: "#60A5FA", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.875rem" }}>
                     🎉 Secret Find!
                   </div>
-                  <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "1.75rem", fontWeight: 800, color: "#F0F0F5", marginBottom: "0.75rem", letterSpacing: "-0.02em", lineHeight: 1.2 }}>
+                  <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "clamp(1.125rem, 4.2vw, 1.75rem)", fontWeight: 800, color: "#F0F0F5", marginBottom: "0.75rem", letterSpacing: "-0.02em", lineHeight: 1.2 }}>
                     You Found Our Weightlifter!
                   </h2>
-                  <p style={{ color: "#C0C0D0", fontSize: "1rem", lineHeight: 1.65, maxWidth: "480px", margin: "0 auto" }}>
+                  <p style={{ color: "#C0C0D0", fontSize: "clamp(0.8125rem, 2.8vw, 1rem)", lineHeight: 1.6, maxWidth: "480px", margin: "0 auto" }}>
                     As a reward for your curiosity, here are <strong style={{ color: "#60A5FA" }}>5 free gym marketing resources</strong> — yours instantly. Just drop your email below.
                   </p>
                 </div>
@@ -208,8 +208,8 @@ export default function WalkingWeightlifter() {
                   background: "rgba(59,130,246,0.06)",
                   border: "1px solid rgba(59,130,246,0.2)",
                   borderRadius: "0.75rem",
-                  padding: "1.25rem 1.5rem",
-                  marginBottom: "1.75rem",
+                  padding: "clamp(0.75rem, 2.5vw, 1.25rem) clamp(0.75rem, 2.5vw, 1.5rem)",
+                  marginBottom: "clamp(1rem, 3vw, 1.75rem)",
                   display: "grid",
                   gridTemplateColumns: "1fr 1fr",
                   gap: "0.625rem",
@@ -222,12 +222,12 @@ export default function WalkingWeightlifter() {
                   ))}
                 </div>
 
-                <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "clamp(0.65rem, 2vw, 1rem)" }}>
                   {/* Hidden source tag */}
                   <input type="hidden" name="source" value="easter_egg_weightlifter" />
 
                   <div>
-                    <label style={{ display: "block", fontSize: "0.875rem", fontWeight: 600, color: "#C0C0D0", marginBottom: "0.5rem" }}>
+                    <label style={{ display: "block", fontSize: "clamp(0.75rem, 2.2vw, 0.875rem)", fontWeight: 600, color: "#C0C0D0", marginBottom: "0.375rem" }}>
                       Your Email Address <span style={{ color: "#EF4444" }}>*</span>
                     </label>
                     <input
@@ -242,7 +242,7 @@ export default function WalkingWeightlifter() {
 
                   <label style={{
                     display: "flex", alignItems: "flex-start", gap: "0.75rem", cursor: "pointer",
-                    padding: "0.875rem", borderRadius: "0.5rem",
+                    padding: "clamp(0.5rem, 2vw, 0.875rem)", borderRadius: "0.5rem",
                     background: consentError ? "rgba(239,68,68,0.06)" : "rgba(255,255,255,0.04)",
                     border: consentError ? "1px solid rgba(239,68,68,0.4)" : "1px solid rgba(255,255,255,0.08)",
                   }}>
@@ -253,7 +253,7 @@ export default function WalkingWeightlifter() {
                       onChange={(e) => { setConsent(e.target.checked); if (e.target.checked) setConsentError(false); }}
                       style={{ width: 18, height: 18, accentColor: "#3B82F6", cursor: "pointer", flexShrink: 0, marginTop: "0.1rem" }}
                     />
-                    <span style={{ fontSize: "0.8125rem", color: "#C0C0D0", lineHeight: 1.55 }}>
+                    <span style={{ fontSize: "clamp(0.7rem, 2.4vw, 0.8125rem)", color: "#C0C0D0", lineHeight: 1.45 }}>
                       I give Lift Media permission to send me these resources and occasional gym marketing tips via email. I can unsubscribe anytime.
                     </span>
                   </label>
@@ -266,7 +266,7 @@ export default function WalkingWeightlifter() {
                   <button
                     type="submit"
                     className="btn-primary"
-                    style={{ width: "100%", justifyContent: "center", fontSize: "1rem", padding: "0.9375rem" }}
+                    style={{ width: "100%", justifyContent: "center", fontSize: "clamp(0.875rem, 2.5vw, 1rem)", padding: "clamp(0.65rem, 2.2vw, 0.9375rem)" }}
                     disabled={state.submitting}
                   >
                     {state.submitting ? (
@@ -279,8 +279,8 @@ export default function WalkingWeightlifter() {
                     ) : "Send Me The Free Resources 🎁"}
                   </button>
 
-                  <div style={{ marginTop: "0.75rem", padding: "0.875rem 1rem", borderRadius: "0.5rem", background: "rgba(59,130,246,0.06)", border: "1px solid rgba(59,130,246,0.15)" }}>
-                    <p style={{ fontSize: "0.8rem", color: "#A0A0C0", lineHeight: 1.6, margin: 0, textAlign: "center" }}>
+                  <div style={{ marginTop: "0.5rem", padding: "clamp(0.5rem, 2vw, 0.875rem) clamp(0.5rem, 2vw, 1rem)", borderRadius: "0.5rem", background: "rgba(59,130,246,0.06)", border: "1px solid rgba(59,130,246,0.15)" }}>
+                    <p style={{ fontSize: "clamp(0.68rem, 2.1vw, 0.8rem)", color: "#A0A0C0", lineHeight: 1.5, margin: 0, textAlign: "center" }}>
                       💬 <strong style={{ color: "#C0C0D0" }}>A real person reads every message</strong> (not a bot!) — please allow up to 3 business days for a reply. We'll try to get back to you sooner. We're real people who genuinely want to connect. 🙏{" "}
                       <Link href="/team" target="_blank" rel="noopener noreferrer" style={{ color: "#60A5FA", fontWeight: 600, textDecoration: "underline" }}>Meet the team →</Link>
                     </p>
@@ -288,13 +288,13 @@ export default function WalkingWeightlifter() {
                 </form>
               </>
             ) : (
-              <div style={{ textAlign: "center", padding: "1.5rem 0" }}>
-                <div style={{ fontSize: "3.5rem", marginBottom: "1rem" }}>🏋️</div>
-                <CheckCircle size={48} color="#3B82F6" style={{ marginBottom: "1rem" }} />
-                <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "1.75rem", fontWeight: 800, color: "#F0F0F5", marginBottom: "0.75rem" }}>
+              <div style={{ textAlign: "center", padding: "clamp(0.75rem, 3vw, 1.5rem) 0" }}>
+                <div style={{ fontSize: "clamp(2.5rem, 10vw, 3.5rem)", marginBottom: "0.75rem" }}>🏋️</div>
+                <CheckCircle size={48} color="#3B82F6" style={{ marginBottom: "0.75rem" }} className="walking-success-check" />
+                <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "clamp(1.125rem, 4.2vw, 1.75rem)", fontWeight: 800, color: "#F0F0F5", marginBottom: "0.75rem" }}>
                   Resources On Their Way!
                 </h2>
-                <p style={{ color: "#C0C0D0", fontSize: "1rem", lineHeight: 1.7, maxWidth: "400px", margin: "0 auto 2rem" }}>
+                <p style={{ color: "#C0C0D0", fontSize: "clamp(0.8125rem, 2.8vw, 1rem)", lineHeight: 1.65, maxWidth: "400px", margin: "0 auto clamp(1rem, 4vw, 2rem)" }}>
                   Check your inbox — your 5 free gym marketing resources are heading your way right now.
                 </p>
                 <button className="btn-primary" style={{ justifyContent: "center", padding: "0.875rem 2.5rem" }} onClick={handleCloseModal}>
@@ -321,6 +321,7 @@ export default function WalkingWeightlifter() {
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         @media (max-width: 640px) {
           .resources-grid { grid-template-columns: 1fr !important; }
+          .walking-success-check { width: 40px !important; height: 40px !important; }
         }
       `}</style>
     </>

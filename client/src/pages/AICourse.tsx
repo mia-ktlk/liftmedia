@@ -352,26 +352,48 @@ export default function AICourse({ onOpenModal }: AICoursePageProps) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#0A0E1A" }}>
-      {sidebarOpen && <div onClick={() => setSidebarOpen(false)} style={{ position: "fixed", inset: 0, zIndex: 40, background: "rgba(0,0,0,0.65)" }} />}
+      {sidebarOpen && (
+        <div
+          onClick={() => setSidebarOpen(false)}
+          className="course-sidebar-backdrop"
+          style={{ position: "fixed", inset: 0, zIndex: 105, background: "rgba(0,0,0,0.65)" }}
+        />
+      )}
 
       {/* Top nav */}
       <nav style={{ position: "sticky", top: 0, zIndex: 100, background: "rgba(10,14,26,0.97)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-        <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "60px", gap: "1rem" }}>
-          <Link href="/" style={{ display: "flex", alignItems: "center", gap: "0.5rem", textDecoration: "none", flexShrink: 0 }}>
-            <div style={{ width: "28px", height: "28px", borderRadius: "7px", background: "linear-gradient(135deg, #3B82F6, #1D4ED8)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.875rem" }}>⚡</div>
-            <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 800, fontSize: "1rem", color: "#F0F0F5" }}><span style={{ color: "#3B82F6" }}>Lift</span>Media</span>
+        <div
+          className="container course-nav-inner"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            minHeight: "60px",
+            height: "60px",
+            gap: "0.75rem",
+            minWidth: 0,
+            boxSizing: "border-box",
+          }}
+        >
+          <Link href="/" className="course-nav-brand" style={{ display: "flex", alignItems: "center", gap: "0.5rem", textDecoration: "none", flexShrink: 0, minWidth: 0 }}>
+            <div style={{ width: "28px", height: "28px", borderRadius: "7px", background: "linear-gradient(135deg, #3B82F6, #1D4ED8)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.875rem", flexShrink: 0 }}>⚡</div>
+            <span className="course-nav-logo-text" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 800, fontSize: "clamp(0.875rem, 3.5vw, 1rem)", color: "#F0F0F5", whiteSpace: "nowrap" }}><span style={{ color: "#3B82F6" }}>Lift</span>Media</span>
           </Link>
-          <div style={{ flex: 1, maxWidth: "320px" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "4px" }}>
-              <span style={{ fontSize: "0.75rem", color: "#6060A0" }}>{isComplete ? "Course complete!" : `${Math.min(currentIndex + 1, aiCourseItems.length)} of ${aiCourseItems.length}`}</span>
-              <span style={{ fontSize: "0.75rem", color: "#3B82F6", fontWeight: 600 }}>{progressPct}%</span>
+
+          <div className="course-nav-progress" style={{ flex: 1, minWidth: 0, maxWidth: "320px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "4px", gap: "0.5rem", minWidth: 0 }}>
+              <span className="course-nav-lesson-label" style={{ fontSize: "0.75rem", color: "#6060A0", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{isComplete ? "Course complete!" : `${Math.min(currentIndex + 1, aiCourseItems.length)} of ${aiCourseItems.length}`}</span>
+              <span style={{ fontSize: "0.75rem", color: "#F59E0B", fontWeight: 600, flexShrink: 0 }}>{progressPct}%</span>
             </div>
             <div style={{ height: "4px", background: "rgba(255,255,255,0.06)", borderRadius: "2px", overflow: "hidden" }}>
               <div style={{ height: "100%", width: `${progressPct}%`, background: "linear-gradient(90deg, #F59E0B, #EF4444)", borderRadius: "2px", transition: "width 0.4s ease" }} />
             </div>
           </div>
-          <span style={{ fontSize: "0.8125rem", color: "#4040A0", flexShrink: 0 }} className="course-nav-count">{completedLessons}/{aiCourseTotalLessons} lessons done</span>
-          <button className="course-hamburger" onClick={() => setSidebarOpen(true)} style={{ display: "none", background: "rgba(245,158,11,0.15)", border: "1px solid rgba(245,158,11,0.3)", borderRadius: "0.5rem", color: "#FCD34D", fontSize: "1.125rem", padding: "0.375rem 0.625rem", cursor: "pointer", flexShrink: 0 }} aria-label="Open lesson list">☰</button>
+
+          <div className="course-nav-actions" style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexShrink: 0 }}>
+            <span style={{ fontSize: "0.8125rem", color: "#4040A0", flexShrink: 0 }} className="course-nav-count">{completedLessons}/{aiCourseTotalLessons} lessons done</span>
+            <button type="button" className="course-hamburger" onClick={() => setSidebarOpen(true)} style={{ display: "none", background: "rgba(245,158,11,0.15)", border: "1px solid rgba(245,158,11,0.3)", borderRadius: "0.5rem", color: "#FCD34D", fontSize: "1.125rem", padding: "0.375rem 0.625rem", cursor: "pointer", flexShrink: 0, alignItems: "center", justifyContent: "center" }} aria-label="Open lesson list">☰</button>
+          </div>
         </div>
       </nav>
 
@@ -388,7 +410,7 @@ export default function AICourse({ onOpenModal }: AICoursePageProps) {
               <button key={item.id} disabled={isLocked} onClick={() => { if (!isLocked) { setCurrentIndex(idx); setSidebarOpen(false); } }}
                 style={{ display: "flex", alignItems: "center", gap: "0.625rem", padding: "0.5rem 0.75rem", borderRadius: "0.5rem", background: isCurrent ? "rgba(245,158,11,0.14)" : "transparent", border: isCurrent ? "1px solid rgba(245,158,11,0.28)" : "1px solid transparent", cursor: isLocked ? "default" : "pointer", opacity: isLocked ? 0.3 : 1, textAlign: "left", width: "100%", transition: "all 0.15s" }}>
                 <span style={{ fontSize: "0.9375rem", flexShrink: 0 }}>{isDone ? "✅" : isCurrent ? item.emoji : isLocked ? "🔒" : item.emoji}</span>
-                <span style={{ fontSize: "0.8rem", color: isCurrent ? "#FCD34D" : isDone ? "#6EE7B7" : "#505080", fontWeight: isCurrent ? 600 : 400, lineHeight: 1.35 }}>{item.type === "quiz" ? "📝 " : ""}{item.title}</span>
+                <span className="course-sidebar-title" style={{ fontSize: "0.8rem", color: isCurrent ? "#FCD34D" : isDone ? "#6EE7B7" : "#505080", fontWeight: isCurrent ? 600 : 400, lineHeight: 1.35, minWidth: 0, overflowWrap: "anywhere", textAlign: "left" }}>{item.type === "quiz" ? "📝 " : ""}{item.title}</span>
               </button>
             );
           })}
@@ -420,7 +442,7 @@ export default function AICourse({ onOpenModal }: AICoursePageProps) {
               <VideoPlayer videoUrl={current.videoUrl} />
               <div>{current.content?.map((item, i) => <LessonContentBlock key={i} item={item} />)}</div>
               <div style={{ marginTop: "3rem", paddingTop: "2rem", borderTop: "1px solid #E2E8F0" }}>
-                <button className="btn-primary" onClick={() => goToNext(current.id)} style={{ fontSize: "1rem", background: "linear-gradient(135deg, #F59E0B, #EF4444)" }}>
+                <button className="btn-primary ai-next-btn" onClick={() => goToNext(current.id)} style={{ fontSize: "1rem", background: "linear-gradient(135deg, #F59E0B, #EF4444)" }}>
                   {currentIndex < aiCourseItems.length - 1 ? "Next →" : "Finish Course →"}
                 </button>
               </div>
@@ -442,19 +464,56 @@ export default function AICourse({ onOpenModal }: AICoursePageProps) {
       </div>
 
       <style>{`
+        .course-nav-inner { min-width: 0; }
         @media (max-width: 768px) {
+          .course-nav-inner {
+            flex-wrap: wrap !important;
+            height: auto !important;
+            min-height: 52px !important;
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
+            row-gap: 0.5rem !important;
+            column-gap: 0.5rem !important;
+            align-items: center !important;
+          }
+          .course-nav-brand { order: 1 !important; max-width: calc(100% - 3.5rem) !important; }
+          .course-nav-actions { order: 2 !important; margin-left: auto !important; }
+          .course-nav-progress {
+            order: 3 !important;
+            flex: 1 1 100% !important;
+            max-width: 100% !important;
+            min-width: 0 !important;
+          }
+          .course-nav-count { display: none !important; }
+          .course-hamburger { display: inline-flex !important; }
           .ai-next-btn { width: 100% !important; justify-content: center !important; }
-          .course-sidebar { position: fixed !important; top: 0 !important; left: 0 !important; height: 100vh !important; z-index: 50; transform: translateX(-100%); transition: transform 0.25s ease; width: 280px !important; padding-top: 1rem !important; }
+          .course-sidebar {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            height: 100dvh !important;
+            max-height: 100dvh !important;
+            z-index: 110 !important;
+            transform: translateX(-100%);
+            transition: transform 0.25s ease;
+            width: min(100vw - 1rem, 300px) !important;
+            max-width: 100% !important;
+            padding: max(0.75rem, env(safe-area-inset-top)) 0.875rem 1rem !important;
+            padding-bottom: max(1rem, env(safe-area-inset-bottom)) !important;
+            box-sizing: border-box !important;
+          }
           .course-sidebar.sidebar-open { transform: translateX(0) !important; }
           .sidebar-close-btn { display: block !important; }
-          .course-hamburger { display: flex !important; }
-          .course-nav-count { display: none !important; }
           .course-main { padding: 1.25rem 1rem !important; }
+          .course-sidebar button { align-items: flex-start !important; }
         }
-        @media (max-width: 480px) { .course-main { padding: 1rem 0.875rem !important; } }
+        @media (max-width: 480px) {
+          .course-main { padding: 1rem 0.875rem !important; }
+          .course-nav-lesson-label { font-size: 0.6875rem !important; }
+        }
         .course-sidebar::-webkit-scrollbar { width: 4px; }
         .course-sidebar::-webkit-scrollbar-track { background: transparent; }
-        .course-sidebar::-webkit-scrollbar-thumb { background: rgba(245,158,11,0.2); border-radius: 2px; }
+        .course-sidebar::-webkit-scrollbar-thumb { background: rgba(245,158,11,0.25); border-radius: 2px; }
       `}</style>
     </div>
   );

@@ -30,7 +30,7 @@ function getResourceSuccessCopy(source?: string): { heading: string; body: React
     return {
       heading: "Your resource is ready!",
       body: (
-        <p style={{ color: "#C0C0D0", fontSize: "1rem", lineHeight: 1.7, marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
+        <p style={{ color: "#C0C0D0", fontSize: "clamp(0.8125rem, 2.8vw, 1rem)", lineHeight: 1.65, marginBottom: "clamp(1rem, 4vw, 2rem)", maxWidth: "480px", margin: "0 auto clamp(1rem, 4vw, 2rem)" }}>
           Your <strong style={{ color: "#F0F0F5" }}>50 Viral Hooks for Gyms</strong> resource is ready to view. We'll also be in touch with more free resources and early access details.
         </p>
       ),
@@ -42,7 +42,7 @@ function getResourceSuccessCopy(source?: string): { heading: string; body: React
     return {
       heading: "Your resource is ready!",
       body: (
-        <p style={{ color: "#C0C0D0", fontSize: "1rem", lineHeight: 1.7, marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
+        <p style={{ color: "#C0C0D0", fontSize: "clamp(0.8125rem, 2.8vw, 1rem)", lineHeight: 1.65, marginBottom: "clamp(1rem, 4vw, 2rem)", maxWidth: "480px", margin: "0 auto clamp(1rem, 4vw, 2rem)" }}>
           Your <strong style={{ color: "#F0F0F5" }}>30-Day Gym Content Calendar</strong> is ready to view. We'll also be in touch with more free resources and early access details.
         </p>
       ),
@@ -54,7 +54,7 @@ function getResourceSuccessCopy(source?: string): { heading: string; body: React
   return {
     heading: "Your resource is ready!",
     body: (
-      <p style={{ color: "#C0C0D0", fontSize: "1rem", lineHeight: 1.7, marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
+      <p style={{ color: "#C0C0D0", fontSize: "clamp(0.8125rem, 2.8vw, 1rem)", lineHeight: 1.65, marginBottom: "clamp(1rem, 4vw, 2rem)", maxWidth: "480px", margin: "0 auto clamp(1rem, 4vw, 2rem)" }}>
         We'll send your resource to your inbox shortly. We'll also be in touch with more free resources and early access details.
       </p>
     ),
@@ -120,9 +120,9 @@ export default function EarlyAccessModal({ isOpen, onClose, source }: EarlyAcces
         role="dialog"
         aria-modal="true"
         style={{
-          width: "85vw",
+          width: "min(100%, calc(100vw - 0.75rem))",
           maxWidth: "820px",
-          padding: "3rem",
+          padding: "clamp(0.875rem, 3.5vw, 3rem)",
           position: "relative",
         }}
       >
@@ -136,24 +136,24 @@ export default function EarlyAccessModal({ isOpen, onClose, source }: EarlyAcces
         </button>
 
         {!state.succeeded ? (
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", alignItems: "start" }} className="modal-inner-grid">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(1rem, 4vw, 3rem)", alignItems: "start" }} className="modal-inner-grid">
             {/* Left: copy */}
-            <div>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.625rem", marginBottom: "1rem" }}>
-                <div style={{ background: "rgba(59,130,246,0.15)", borderRadius: "0.5rem", padding: "0.5rem" }}>
-                  <Zap size={20} color="#3B82F6" />
+            <div className="early-access-copy-col">
+              <div style={{ display: "flex", alignItems: "center", gap: "0.625rem", marginBottom: "clamp(0.5rem, 2vw, 1rem)" }}>
+                <div style={{ background: "rgba(59,130,246,0.15)", borderRadius: "0.5rem", padding: "0.5rem" }} className="early-access-zap-wrap">
+                  <Zap size={20} color="#3B82F6" className="early-access-zap-icon" />
                 </div>
                 <span className="section-label">{isResource ? "Get Free Resource" : "Get Early Access"}</span>
               </div>
-              <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "1.875rem", fontWeight: 800, color: "#F0F0F5", marginBottom: "1rem", lineHeight: 1.15, letterSpacing: "-0.02em" }}>
+              <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "clamp(1.125rem, 4.5vw, 1.875rem)", fontWeight: 800, color: "#F0F0F5", marginBottom: "clamp(0.5rem, 2vw, 1rem)", lineHeight: 1.15, letterSpacing: "-0.02em" }}>
                 {isResource ? "Get Your Free Resource" : "Start Growing Your Gym With Content That Converts"}
               </h2>
-              <p style={{ color: "#C0C0D0", fontSize: "1rem", lineHeight: 1.7, marginBottom: "1.5rem" }}>
+              <p style={{ color: "#C0C0D0", fontSize: "clamp(0.8125rem, 2.8vw, 1rem)", lineHeight: 1.6, marginBottom: "clamp(0.75rem, 2.5vw, 1.5rem)" }}>
                 {isResource
                   ? "Enter your email and we'll send you the resource directly. No spam — just the good stuff."
                   : "Join the waitlist and get free resources, early access, and a personalized content strategy for your gym."}
               </p>
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "clamp(0.4rem, 1.5vw, 0.75rem)" }} className="early-access-perks">
                 {[
                   "Free Gym Growth Checklist",
                   "Early access to the Lift Media app",
@@ -161,16 +161,16 @@ export default function EarlyAccessModal({ isOpen, onClose, source }: EarlyAcces
                   "Weekly gym marketing tips",
                 ].map((item) => (
                   <div key={item} style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
-                    <CheckCircle size={16} color="#3B82F6" style={{ flexShrink: 0 }} />
-                    <span style={{ fontSize: "0.9375rem", color: "#C0C0D0" }}>{item}</span>
+                    <CheckCircle size={16} color="#3B82F6" style={{ flexShrink: 0 }} className="early-access-perk-check" />
+                    <span style={{ fontSize: "clamp(0.75rem, 2.4vw, 0.9375rem)", color: "#C0C0D0" }}>{item}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Right: form */}
-            <div>
-              <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.125rem" }}>
+            <div className="early-access-form-col">
+              <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "clamp(0.65rem, 2vw, 1.125rem)" }}>
                 {/* Hidden fields — always include source; include resource_name for resource requests */}
                 <input type="hidden" name="source" value={source ?? "early_access"} />
                 {isResource && (
@@ -178,7 +178,7 @@ export default function EarlyAccessModal({ isOpen, onClose, source }: EarlyAcces
                 )}
 
                 <div>
-                  <label style={{ display: "block", fontSize: "0.875rem", fontWeight: 600, color: "#C0C0D0", marginBottom: "0.5rem" }}>
+                  <label style={{ display: "block", fontSize: "clamp(0.75rem, 2.2vw, 0.875rem)", fontWeight: 600, color: "#C0C0D0", marginBottom: "0.375rem" }}>
                     Gym Name
                   </label>
                   <input
@@ -194,7 +194,7 @@ export default function EarlyAccessModal({ isOpen, onClose, source }: EarlyAcces
                 </div>
 
                 <div>
-                  <label style={{ display: "block", fontSize: "0.875rem", fontWeight: 600, color: "#C0C0D0", marginBottom: "0.5rem" }}>
+                  <label style={{ display: "block", fontSize: "clamp(0.75rem, 2.2vw, 0.875rem)", fontWeight: 600, color: "#C0C0D0", marginBottom: "0.375rem" }}>
                     Email Address <span style={{ color: "#EF4444" }}>*</span>
                   </label>
                   <input
@@ -213,9 +213,9 @@ export default function EarlyAccessModal({ isOpen, onClose, source }: EarlyAcces
                     style={{
                       display: "flex",
                       alignItems: "flex-start",
-                      gap: "0.75rem",
+                      gap: "0.5rem",
                       cursor: "pointer",
-                      padding: "0.875rem",
+                      padding: "clamp(0.5rem, 2vw, 0.875rem)",
                       borderRadius: "0.5rem",
                       background: consentError ? "rgba(239,68,68,0.06)" : "rgba(255,255,255,0.04)",
                       border: consentError ? "1px solid rgba(239,68,68,0.4)" : "1px solid rgba(255,255,255,0.08)",
@@ -231,7 +231,7 @@ export default function EarlyAccessModal({ isOpen, onClose, source }: EarlyAcces
                         style={{ width: 18, height: 18, accentColor: "#3B82F6", cursor: "pointer" }}
                       />
                     </div>
-                    <span style={{ fontSize: "0.8125rem", color: "#C0C0D0", lineHeight: 1.55 }}>
+                    <span style={{ fontSize: "clamp(0.7rem, 2.5vw, 0.8125rem)", color: "#C0C0D0", lineHeight: 1.45 }}>
                       I give Lift Media permission to send me resources, updates, and things like early access to their app via their newsletter. I understand I can unsubscribe at any time.
                     </span>
                   </label>
@@ -248,7 +248,7 @@ export default function EarlyAccessModal({ isOpen, onClose, source }: EarlyAcces
                 <button
                   type="submit"
                   className="btn-primary"
-                  style={{ width: "100%", justifyContent: "center", fontSize: "1rem", padding: "0.9375rem", marginTop: "0.25rem" }}
+                  style={{ width: "100%", justifyContent: "center", fontSize: "clamp(0.875rem, 2.5vw, 1rem)", padding: "clamp(0.65rem, 2.2vw, 0.9375rem)", marginTop: "0.25rem" }}
                   disabled={state.submitting}
                 >
                   {state.submitting ? (
@@ -264,11 +264,11 @@ export default function EarlyAccessModal({ isOpen, onClose, source }: EarlyAcces
                 </button>
               </form>
 
-              <p style={{ textAlign: "center", fontSize: "0.8125rem", color: "#7070A0", marginTop: "1rem" }}>
+              <p style={{ textAlign: "center", fontSize: "clamp(0.7rem, 2.2vw, 0.8125rem)", color: "#7070A0", marginTop: "0.75rem" }}>
                 No spam. No commitments. Unsubscribe anytime.
               </p>
-              <div style={{ marginTop: "1rem", padding: "0.875rem 1rem", borderRadius: "0.5rem", background: "rgba(59,130,246,0.06)", border: "1px solid rgba(59,130,246,0.15)" }}>
-                <p style={{ fontSize: "0.8rem", color: "#A0A0C0", lineHeight: 1.6, margin: 0, textAlign: "center" }}>
+              <div style={{ marginTop: "0.75rem", padding: "clamp(0.5rem, 2vw, 0.875rem) clamp(0.5rem, 2vw, 1rem)", borderRadius: "0.5rem", background: "rgba(59,130,246,0.06)", border: "1px solid rgba(59,130,246,0.15)" }}>
+                <p style={{ fontSize: "clamp(0.68rem, 2.1vw, 0.8rem)", color: "#A0A0C0", lineHeight: 1.5, margin: 0, textAlign: "center" }}>
                   💬 <strong style={{ color: "#C0C0D0" }}>A real person reads every submission</strong> (not a bot!) — please allow up to 3 business days for a reply. We'll do our best to get back to you sooner. We're real people who genuinely want to connect with you. 🙏{" "}
                   <Link href="/team" target="_blank" rel="noopener noreferrer" style={{ color: "#60A5FA", fontWeight: 600, textDecoration: "underline" }}>Meet the team →</Link>
                 </p>
@@ -276,13 +276,13 @@ export default function EarlyAccessModal({ isOpen, onClose, source }: EarlyAcces
             </div>
           </div>
         ) : (
-          <div style={{ textAlign: "center", padding: "2rem 0" }}>
-            <div style={{ display: "flex", justifyContent: "center", marginBottom: "1.25rem" }}>
-              <CheckCircle size={56} color="#3B82F6" />
+          <div style={{ textAlign: "center", padding: "clamp(1rem, 4vw, 2rem) 0" }}>
+            <div style={{ display: "flex", justifyContent: "center", marginBottom: "clamp(0.75rem, 3vw, 1.25rem)" }}>
+              <CheckCircle size={56} color="#3B82F6" className="early-access-success-icon" />
             </div>
             {isResource ? (
               <>
-                <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "1.875rem", fontWeight: 800, color: "#F0F0F5", marginBottom: "0.75rem" }}>
+                <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "clamp(1.125rem, 4.5vw, 1.875rem)", fontWeight: 800, color: "#F0F0F5", marginBottom: "0.75rem" }}>
                   {successCopy.heading}
                 </h2>
                 {successCopy.body}
@@ -299,10 +299,10 @@ export default function EarlyAccessModal({ isOpen, onClose, source }: EarlyAcces
               </>
             ) : (
               <>
-                <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "1.875rem", fontWeight: 800, color: "#F0F0F5", marginBottom: "0.75rem" }}>
+                <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "clamp(1.125rem, 4.5vw, 1.875rem)", fontWeight: 800, color: "#F0F0F5", marginBottom: "0.75rem" }}>
                   You're on the list!
                 </h2>
-                <p style={{ color: "#C0C0D0", fontSize: "1rem", lineHeight: 1.7, marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
+                <p style={{ color: "#C0C0D0", fontSize: "clamp(0.8125rem, 2.8vw, 1rem)", lineHeight: 1.65, marginBottom: "clamp(1rem, 4vw, 2rem)", maxWidth: "480px", margin: "0 auto clamp(1rem, 4vw, 2rem)" }}>
                   We'll be in touch shortly with your free resources and early access details for <strong style={{ color: "#F0F0F5" }}>{gymName || "your gym"}</strong>.
                 </p>
                 <button className="btn-primary" style={{ justifyContent: "center", padding: "0.875rem 2.5rem" }} onClick={handleClose}>
@@ -317,7 +317,15 @@ export default function EarlyAccessModal({ isOpen, onClose, source }: EarlyAcces
       <style>{`
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         @media (max-width: 640px) {
-          .modal-inner-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+          .modal-inner-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1rem !important;
+          }
+          .early-access-form-col { order: -1; }
+          .early-access-zap-wrap { padding: 0.35rem !important; }
+          .early-access-zap-icon { width: 16px !important; height: 16px !important; }
+          .early-access-perk-check { width: 14px !important; height: 14px !important; }
+          .early-access-success-icon { width: 44px !important; height: 44px !important; }
         }
       `}</style>
     </div>

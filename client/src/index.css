@@ -465,6 +465,20 @@
     font-size: 0.6875rem !important;
     letter-spacing: 0.04em !important;
   }
+
+  /* Modals — use horizontal space; reduce padding vs desktop (beats inline padding on small screens) */
+  .modal-overlay {
+    padding: 0.5rem 0.375rem;
+  }
+  .modal-box {
+    padding: 1rem 0.75rem !important;
+    border-radius: 0.75rem;
+    width: 100% !important;
+  }
+  .lift-input {
+    font-size: 0.875rem;
+    padding: 0.625rem 0.75rem;
+  }
 }
 
 /* ── Electric Heading Letter Animation ─────────────────────────────────────── */

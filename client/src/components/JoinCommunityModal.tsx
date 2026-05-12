@@ -97,16 +97,16 @@ export default function JoinCommunityModal({ isOpen, onClose }: JoinCommunityMod
         {!submitted ? (
           <>
             {/* Header */}
-            <div style={{ textAlign: "center", marginBottom: "1.75rem" }}>
+            <div style={{ textAlign: "center", marginBottom: "clamp(1rem, 4vw, 1.75rem)" }}>
               <div style={{
                 width: 52, height: 52,
                 background: "linear-gradient(135deg, rgba(59,130,246,0.2), rgba(129,140,248,0.2))",
                 border: "1px solid rgba(59,130,246,0.35)",
                 borderRadius: "0.875rem",
                 display: "flex", alignItems: "center", justifyContent: "center",
-                margin: "0 auto 1rem",
-              }}>
-                <Users size={24} color="#60A5FA" />
+                margin: "0 auto clamp(0.5rem, 2vw, 1rem)",
+              }} className="join-community-icon-wrap">
+                <Users size={24} color="#60A5FA" className="join-community-users-icon" />
               </div>
               <div style={{
                 display: "inline-flex", alignItems: "center", gap: "0.4rem",
@@ -119,13 +119,13 @@ export default function JoinCommunityModal({ isOpen, onClose }: JoinCommunityMod
               </div>
               <h2 style={{
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
-                fontSize: "1.625rem", fontWeight: 800,
+                fontSize: "clamp(1.125rem, 4.2vw, 1.625rem)", fontWeight: 800,
                 color: "#F0F0F5", marginBottom: "0.625rem",
                 letterSpacing: "-0.02em", lineHeight: 1.2,
               }}>
                 Request Early Access to the Community
               </h2>
-              <p style={{ color: "#9090B0", fontSize: "0.9375rem", lineHeight: 1.65, maxWidth: "420px", margin: "0 auto" }}>
+              <p style={{ color: "#9090B0", fontSize: "clamp(0.8125rem, 2.6vw, 0.9375rem)", lineHeight: 1.6, maxWidth: "420px", margin: "0 auto" }}>
                 Join gym owners getting the tools, resources, and community they need to grow with content.
               </p>
             </div>
@@ -135,8 +135,8 @@ export default function JoinCommunityModal({ isOpen, onClose }: JoinCommunityMod
               background: "rgba(59,130,246,0.05)",
               border: "1px solid rgba(59,130,246,0.15)",
               borderRadius: "0.75rem",
-              padding: "1rem 1.25rem",
-              marginBottom: "1.5rem",
+              padding: "clamp(0.75rem, 2.5vw, 1rem) clamp(0.75rem, 2.5vw, 1.25rem)",
+              marginBottom: "clamp(0.875rem, 3vw, 1.5rem)",
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
               gap: "0.5rem 1rem",
@@ -150,7 +150,7 @@ export default function JoinCommunityModal({ isOpen, onClose }: JoinCommunityMod
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} noValidate style={{ display: "flex", flexDirection: "column", gap: "0.875rem" }}>
+            <form onSubmit={handleSubmit} noValidate style={{ display: "flex", flexDirection: "column", gap: "clamp(0.625rem, 2vw, 0.875rem)" }} className="join-community-form">
               {/* Name */}
               <div>
                 <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 600, color: "#C0C0D0", marginBottom: "0.375rem" }}>
@@ -212,7 +212,7 @@ export default function JoinCommunityModal({ isOpen, onClose }: JoinCommunityMod
                   onChange={(e) => { setConsent(e.target.checked); if (e.target.checked) setErrors((prev) => ({ ...prev, consent: undefined })); }}
                   style={{ width: 18, height: 18, accentColor: "#3B82F6", cursor: "pointer", flexShrink: 0, marginTop: "0.1rem" }}
                 />
-                <span style={{ fontSize: "0.8125rem", color: "#C0C0D0", lineHeight: 1.55 }}>
+                <span style={{ fontSize: "clamp(0.7rem, 2.4vw, 0.8125rem)", color: "#C0C0D0", lineHeight: 1.45 }}>
                   I agree to receive <strong style={{ color: "#F0F0F5" }}>free gym marketing resources</strong> and the{" "}
                   <strong style={{ color: "#F0F0F5" }}>Lift Media newsletter</strong> with weekly tips. I can unsubscribe anytime.{" "}
                   <span style={{ color: "#EF4444", fontWeight: 700 }}>Required to join.</span>
@@ -224,7 +224,7 @@ export default function JoinCommunityModal({ isOpen, onClose }: JoinCommunityMod
               <button
                 type="submit"
                 className="btn-primary"
-                style={{ width: "100%", justifyContent: "center", fontSize: "1rem", padding: "0.9375rem", marginTop: "0.25rem" }}
+                style={{ width: "100%", justifyContent: "center", fontSize: "clamp(0.875rem, 2.5vw, 1rem)", padding: "clamp(0.65rem, 2.2vw, 0.9375rem)", marginTop: "0.25rem" }}
                 disabled={submitting}
               >
                 {submitting ? (
@@ -253,13 +253,13 @@ export default function JoinCommunityModal({ isOpen, onClose }: JoinCommunityMod
             </div>
             <h2 style={{
               fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontSize: "1.625rem", fontWeight: 800,
+              fontSize: "clamp(1.125rem, 4.2vw, 1.625rem)", fontWeight: 800,
               color: "#F0F0F5", marginBottom: "0.75rem",
               letterSpacing: "-0.02em",
             }}>
               You're on the list!
             </h2>
-            <p style={{ color: "#9090B0", fontSize: "0.9375rem", lineHeight: 1.7, maxWidth: "380px", margin: "0 auto 2rem" }}>
+            <p style={{ color: "#9090B0", fontSize: "clamp(0.8125rem, 2.6vw, 0.9375rem)", lineHeight: 1.65, maxWidth: "380px", margin: "0 auto clamp(1rem, 4vw, 2rem)" }}>
               We'll be in touch with your early access details and your first free resources shortly. Welcome to the community.
             </p>
             <button className="btn-primary" style={{ justifyContent: "center", padding: "0.875rem 2.5rem" }} onClick={onClose}>
@@ -270,8 +270,10 @@ export default function JoinCommunityModal({ isOpen, onClose }: JoinCommunityMod
 
         <style>{`
           @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-          @media (max-width: 480px) {
-            .community-perks-grid { grid-template-columns: 1fr !important; }
+          @media (max-width: 640px) {
+            .community-perks-grid { grid-template-columns: 1fr !important; gap: 0.4rem 0.5rem !important; }
+            .join-community-icon-wrap { width: 44px !important; height: 44px !important; border-radius: 0.65rem !important; }
+            .join-community-users-icon { width: 20px !important; height: 20px !important; }
           }
         `}</style>
       </div>
